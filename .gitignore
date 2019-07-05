@@ -1,0 +1,40 @@
+### Angular ###
+## Angular ##
+# compiled output
+/Frontend/SignalR/dist
+/Frontend/SignalR/tmp
+/Frontend/SignalR/app/**/*.js
+/Frontend/SignalR/app/**/*.js.map
+
+# dependencies
+/Frontend/SignalR/node_modules
+/Frontend/SignalR/bower_components
+
+# IDEs and editors
+/Frontend/SignalR/.idea
+
+# misc
+/Frontend/SignalR/.sass-cache
+/Frontend/SignalR/connect.lock
+/coverage/*
+/Frontend/SignalR/libpeerconnection.log
+/Frontend/SignalR/npm-debug.log
+/Frontend/SignalR/testem.log
+/Frontend/SignalR/typings
+
+# e2e
+/Frontend/SignalR/e2e/*.js
+/Frontend/SignalR//e2e/*.map
+
+#System Files
+/Frontend/SignalR/.DS_Store
+
+### DotnetCore ###
+# .NET Core build folders
+/Backend/SignalR/bin
+/Backend/SignalR/obj
+
+# Common node modules locations
+/Backend/SignalR/wwwroot/node_modules
+
+/Backend/.vs/
