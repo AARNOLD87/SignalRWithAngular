@@ -14,11 +14,13 @@ export class AppComponent implements OnDestroy {
                               {val1: '---', val2: '---', val3: '---', val4: '---'};
 
   constructor(private signalrService: SignalrService) {
-    this.signalRSubscription = this.signalrService.connect((message) => {
-      this.content.val1 = message.val1;
-      this.content.val2 = message.val2;
-      this.content.val3 = message.val3;
-      this.content.val4 = message.val4;
+    this.signalrService.connect();
+    this.signalRSubscription = this.signalrService.getMessage().subscribe(
+      (message) => {
+        this.content.val1 = message.val1;
+        this.content.val2 = message.val2;
+        this.content.val3 = message.val3;
+        this.content.val4 = message.val4;
     });
   }
 
