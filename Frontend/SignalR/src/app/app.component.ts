@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
-import { SignalrService } from './services/signalr.service';
+import { SignalRService } from './services/signalr.service';
 import { Subscription } from 'rxjs';
+import { Message } from './message';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +11,12 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnDestroy {
   private signalRSubscription: Subscription;
 
-  public content: {val1: string, val2: string, val3: string, val4: string} =
-                              {val1: '---', val2: '---', val3: '---', val4: '---'};
+  public content = new Message() ;
 
-  constructor(private signalrService: SignalrService) {
+  constructor(private signalrService: SignalRService) {
     this.signalRSubscription = this.signalrService.getMessage().subscribe(
       (message) => {
-        this.content.val1 = message.val1;
-        this.content.val2 = message.val2;
-        this.content.val3 = message.val3;
-        this.content.val4 = message.val4;
+        this.content = message;
     });
   }
 
