@@ -23,8 +23,8 @@ export class SignalrService {
     }
   }
 
-  public getMessage(methodName: string, next) {
-      this.connection.on(methodName, (message) => {
+  public getMessage(next) {
+      this.connection.on('SendMessage', (message) => {
         next(message);
       });
   }
