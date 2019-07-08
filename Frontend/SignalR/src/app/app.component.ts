@@ -14,7 +14,6 @@ export class AppComponent implements OnDestroy {
                               {val1: '---', val2: '---', val3: '---', val4: '---'};
 
   constructor(private signalrService: SignalrService) {
-    this.signalrService.connect();
     this.signalRSubscription = this.signalrService.getMessage().subscribe(
       (message) => {
         this.content.val1 = message.val1;

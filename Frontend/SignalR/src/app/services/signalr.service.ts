@@ -7,23 +7,23 @@ import { Subject, Observable } from 'rxjs';
 })
 export class SignalrService {
   private message$: Subject<any>;
-  connection: signalR.HubConnection;
+  private connection: signalR.HubConnection;
 
   constructor() {
     this.message$ = new Subject<any>();
     this.connection = new signalR.HubConnectionBuilder()
     .withUrl('http://localhost:2172/notificationHub')
     .build();
+
+    this.connect();
   }
 
-  public connect() {
-    if (this.connection.state === signalR.HubConnectionState.Disconnected) {
-      this.connection.start().catch(err => console.log(err));
+  private connect() {
+    this.connection.start().catch(err => console.log(err));
 
-      this.connection.on('SendMessage', (message) => {
-        this.message$.next(message);
-      });
-    }
+    this.connection.on('SendMessage', (message) => {
+      this.message$.next(message);
+    });
   }
 
   public getMessage(): Observable<any> {
