@@ -11,7 +11,7 @@ import { Message } from './message';
 export class AppComponent implements OnDestroy {
   private signalRSubscription: Subscription;
 
-  public content = new Message() ;
+  public content: Message;
 
   constructor(private signalrService: SignalRService) {
     this.signalRSubscription = this.signalrService.getMessage().subscribe(
