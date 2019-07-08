@@ -8,24 +8,24 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnDestroy {
-  private signalRSubscription: Subscription;
+ // private signalRSubscription: Subscription;
 
   public content: {val1: string, val2: string, val3: string, val4: string} =
                               {val1: '---', val2: '---', val3: '---', val4: '---'};
 
   constructor(private signalrService: SignalrService) {
-    this.signalrService.connect();
-    this.signalRSubscription = this.signalrService.getMessage().subscribe(
+    this.signalrService.getMessage('SendMessage',
       (message) => {
         this.content.val1 = message.val1;
         this.content.val2 = message.val2;
         this.content.val3 = message.val3;
         this.content.val4 = message.val4;
-    });
+      }
+    );
   }
 
   ngOnDestroy(): void {
     this.signalrService.disconnect();
-    this.signalRSubscription.unsubscribe();
+   // this.signalRSubscription.unsubscribe();
   }
 }
